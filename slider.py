@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os, pygame, argparse, math, sys
 
 settings = {'resolution': (1280, 72), 'fullscreen': False, 'preserve_aspect_ratio': True, 'framerate': 30, 'debug': True, 'directory': '/home/hunter/Archives/lappystuff/Art', 'transition': 'fade', 'transitiontime': 1, 'imagetime': 5}
@@ -35,7 +36,7 @@ class Main:
     def __init__(self, settings):
         self.settings = settings
 
-        files = os.listdir(self.settings['directory'])
+        files = os.listdir(self.settings['directory'][0])
         self.paths = []
         for f in files:
             self.paths.append(os.path.join(self.settings['directory'], f))
@@ -108,7 +109,7 @@ class Main:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Slider - Simple Image Slideshow')
-    parser.add_argument('directory', metavar='[path]', type=str, nargs='?', help='Path to directory containing images to be displayed.')
+    parser.add_argument('directory', metavar='[path]', type=str, nargs=1, help='Path to directory containing images to be displayed.')
     parser.add_argument('--resolution', '-r', metavar='HeightxWidth', type=lambda s: (int(s.split('x')[0]), int(s.split('x')[1])), nargs='?', help='Resolution of display window.')
     parser.add_argument('--fullscreen', '-f', action='store_true', help='Enables fullscreen display.')
     parser.add_argument('--preserve-aspect-ratio', '-p', action='store_true', help='Preserves aspect ratio of images when resizing.')
