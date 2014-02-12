@@ -39,7 +39,7 @@ class Main:
         files = os.listdir(self.settings['directory'][0])
         self.paths = []
         for f in files:
-            self.paths.append(os.path.join(self.settings['directory'], f))
+            self.paths.append(os.path.join(self.settings['directory'][0], f))
 
         self.clock = pygame.time.Clock()
         if not self.settings.get('resolution'):
